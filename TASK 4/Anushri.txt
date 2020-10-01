@@ -1,0 +1,53 @@
+FLEX SENSOR:
+A flex sensor which is also known as bend sensor helps in measuring the amount of deflection or bending with a sensor. 
+This sensor is stuck on a surface and resistance of sensor element is varied by bending the surface i.e. resistance is directly proportional to the amount of bend. 
+These are based on resistive carbon elements, as a variable printed resistor, the flex sensor achieves great form factor on a thin flexible substrate. 
+When this substrate is bend, an output resistance is produced that is correlated to the bend radius by the sensor. Thus the smaller the radius ,the higher resistive value is 
+produced. A flex sensor has a range from about ~10K to ~35K which means it won’t return a full 0-5 volt range.
+
+CODE:
+int flex1=A0;
+int flex2=A1;
+
+void setup{
+  pinMode(flex1, INPUT);
+  pinMode(flex2,INPUT);
+  pinMode(D6,OUTPUT);
+  serial.begin(9600);
+}
+void loop
+{
+  int val1,val2;
+  val1= analogRead(flex1);
+  val2=analogRead(flex2);
+
+  if((flex1>700 && flex1<900) && (flex2<700 ))
+  {
+    digitalWrite(D6,HIGH);
+    delay(500);
+    digitalWrite(D6,LOW);
+    delay(500);
+  }
+
+  else if((flex1<700)&&(flex2>700 && flex2<900))
+  {
+    digitalWrite(D6,HIGH);
+    delay(500);
+    digitalWrite(D6,LOW);
+    delay(500);
+    digitalWrite(D6,HIGH);
+    delay(500);
+    digitalWrite(D6,LOW);
+    delay(500);
+  }
+
+  else if((flex1>700 && flex2<900) && (flex2>700 && flex2<900))
+  {
+    digitalWrite(D6,HIGH);
+  }
+  else
+  {
+    digitalWrite(D6,LOW);
+  }
+}
+
