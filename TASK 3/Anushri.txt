@@ -47,23 +47,16 @@ print(complete_message)
 
 
 GSM/GPRS: 
-GSM stands for Global System for Mobile Communication and GPRS stands for General Packet Radio Service. 
-It is an international standard for mobile telephones. It is an acronym that stands for Global System for Mobile Communications. 
-It is also sometimes referred to as 2G, as it is a second-generation cellular network. 
-PRS or General Packet Radio Service is an extension of the GSM Network. 
-GPRS is an integrated part of the GSM Network which provides an efficient way to transfer data with the same resources as GSM Network. 
-To use GPRS for internet access, and for the Arduino to request or serve webpages, you need to obtain the Access Point Name (APN) and a username/password from the network operator. 
-GPRS is a packet switching technology that stands for General Packet Radio Service. 
-It can provide idealized data rates between 56-114 kilobit per second. 
-
-BRAIN WAVE SENSOR: When a group of neurons experience this change in electrical impulse, they generate an electrical field which resembles a small vibration and which can be then detected on the scalp by an EEG sensors.
-Basically, the brain receives an electrical signal, which causes an action potential within neurons. 
-There are generally 5 types of Brain waves according to the frequency- Delta, Theta, Alpha, Beta and Gamma (from least to highest frequency).
+This a circuit used to establish a connection/communication between a mobile device/computing machine and a GSM/GPRS module. A module can be integrated within an equipment , generally it’s an embedded piece of hardware.
+Global System for Mobile Communications(GSM) is an open and digital cellular technology used for the transmission of mobile voice and data services. It is now the default global standard for mobile communications. A GSM digitizes and compresses the data and sends it down through a channel with two different streams of client data, each in its own particular time slot. A GSM system  consists of different cells such as macro, micro, pico and umbrella cells. A GSM module provides features such as international roaming, SMS, fixed dialling number, real time clock with alarm management, improved spectrum efficiency, support for new services and many more.
+ General Packet Radio Service is a packet oriented mobile data service on the 2G and 3G cellular communication network’s global system for mobile communication. In response of the earlier packet-switched cellular technologies GPRS was established. GPRS is sold according to the total volume of data transferred during the billing cycle. The GPRS system is an integrated part of the GSM network switching subsystem. It’s latency depends on the number of other users sharing the service concurrently. It provides moderate speed data transfer by using unused time division multiple access channels like the GSM system.
 
 
-MUSCLE SENSOR: The muscle sensors measures muscle activity through the electric potential of the muscle, commonly referred to as electromyography. 
-When our brain tells your muscle to flex, it sends an electrical signal to our muscle to start recruiting motor units. 
-The harder you flex, the more motor units are synchronized to generate greater muscle force. 
-The greater the number of motor units synchronized, the more the electrical activity of our muscle increases. 
-The muscle sensors analyse the electrical activity and give output an analog signal that shows how hard the muscle is being flexed.
-  
+BRAIN WAVE SENSOR: Electroencephalography technology or EEG measures the difference in the electric field that is produced by neurotransmission in real time. The data is represented on a graph that is picked up by the electrodes due to the electrical field produced on the scalp. An Open BCI(Brain Computing Interface) was released that provided an open source bio sensing platform that allows the consumer to keep track of the electrical activity produced by the brain, heart and muscles. Using EEG technology many usually devices were created such as a headband which works by placing sensors along the forehead and behind the ears. The device is paired with an application that notes the electrical impulses read by the sensor. The application then determines if the user needs to become more focused  or not. If the wave increases in frequency then it indicates that the user is distracted from the given task and need to be more focused. As a feedback response ,the application increases the volume of the sound that the user is hearing in an attempt to regain the user’s focus.
+In order to get the most the most accurate reading ,the electrodes need to be placed all  along the scalp and around the eyes as the impulses are spread across the skull.
+
+
+
+MUSCLE SENSOR: Muscle sensors measures a person’s muscle activity through the electric potential of the muscle. This is also known as electromyography. When the brain sends signals to the muscle to flex, the motor units is recruited by the muscle and when a greater number of these motor units are synchronized it produces greater amount of electrical activity in the muscles. The sensor analyses this activity and produces output an analog signal which represents how hard a muscle can be flexed. The electrical signals produced generated by the muscles are the waveforms called raw EMG signal that is measured by the EMG sensor. The waveform contains a lot of information and is very useful. After obtaining the waveform it further needs to be processed and after all this processing an output voltage is obtained that depicts the amount of muscle activity.
+ It is used to detect medical abnormalities, activation level or recruitment order or to analyse the biomechanics of human or animal movement. It is also used in gesture recognition that allows the input of physical action to a computer as a form of human-computer interaction.
+
