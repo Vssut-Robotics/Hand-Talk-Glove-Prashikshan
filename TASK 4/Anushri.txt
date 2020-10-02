@@ -9,37 +9,47 @@ CODE:
 int flex1=A0;
 int flex2=A1;
 
-void setup{
-  pinMode(flex1, INPUT);
-  pinMode(flex2,INPUT);
-  pinMode(D6,OUTPUT);
-  serial.begin(9600);
+void setup{	
+pinMode(flex1, INPUT);
+	pinMode(flex2,INPUT);
+	pinMode(D6,OUTPUT);
+	serial.begin(9600);
 }
-void loop
+
+void loop{
+int val1,val2;
+val1= analogRead(flex1);
+val2=analogRead(flex2);
+
+if((flex1>700 && flex1<900) && (flex2<700 ))
 {
-  int val1,val2;
-  val1= analogRead(flex1);
-  val2=analogRead(flex2);
+	digitalWrite(D6,HIGH);
+	delay(500);
+	digitalWrite(D6,LOW);
+	delay(500);
+}
+	else if((flex1<700)&&(flex2>700 && flex2<900))
+	{
+		digitalWrite(D6,HIGH);
+	delay(500);
+	digitalWrite(D6,LOW);
+	delay(500);
+		digitalWrite(D6,HIGH);
+	delay(500);
+	digitalWrite(D6,LOW);
+	delay(500);
+}
 
-  if((flex1>700 && flex1<900) && (flex2<700 ))
-  {
-    digitalWrite(D6,HIGH);
-    delay(500);
-    digitalWrite(D6,LOW);
-    delay(500);
-  }
+else if((flex1>700 && flex2<900) && (flex2>700 && flex2<900))
+{
+	digitalWrite(D6,HIGH);
+}
+else 
+ {
+	digitalWrite(D6,LOW);
+}
+}
 
-  else if((flex1<700)&&(flex2>700 && flex2<900))
-  {
-    digitalWrite(D6,HIGH);
-    delay(500);
-    digitalWrite(D6,LOW);
-    delay(500);
-    digitalWrite(D6,HIGH);
-    delay(500);
-    digitalWrite(D6,LOW);
-    delay(500);
-  }
 
   else if((flex1>700 && flex2<900) && (flex2>700 && flex2<900))
   {
