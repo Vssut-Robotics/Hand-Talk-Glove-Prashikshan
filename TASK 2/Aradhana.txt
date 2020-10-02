@@ -12,22 +12,38 @@ An Ultrasonic Sensor is a non-contact type device that can be used to measure di
 TOUCH SENSOR: 
 Touch Sensors are the electronic sensors that can detect touch. They operate as a switch when touched. These sensors are used in lamps, touch screens of the mobile, etc. Touch sensors offer an intuitive user interface. HUMIDITY SENSOR: A humidity sensor measures and reports both moisture and air temperature. They are used for range far and wide. People with illnesses affected by humidity, monitoring and preventive measure in homes employ humidity sensors. A humidity sensor is also found as part of home heating, ventilating and air conditioning systems.
 
+PROXIMITY SENSOR:
+A Proximity Sensor is a device that detects the presence of nearby objects without any physical contact. An electromagnetic beam/field is emitted by the sensor and the sensor tries to find any changes in the field due to the proximity sensor’s target. There are different types of proximity sensors available like capacitive proximity sensor, photoelectric sensor, inductive proximity sensor etc. Some of the applications of these sensors are in mobile phones, parking sensor in cars, industries, ground proximity in aircrafts etc.
+
+SMOKE SENSOR: 
+A smoke sensor is a device that detects usually any kind of smoke, typically as an indicator of fire. The two most commonly recognized smoke detectors are ionization smoke alarm and photoelectric smoke alarm. Ionization smoke alarm helps in detecting fast, flaming fires with little smoke while photoelectric smoke alarm detects smouldering and smoky fires.
+
+ACCELEROMETER: 
+An accelerometer sensor is used to measure the proper acceleration that is exerted upon the sensor. There  are different types of accelerometer like compression mode, shear mode and capacitive. These can be used  to measure vibration on cars, machines, buildings etc.
+
+HUMDITY SENSOR: 
+A humidity sensor is a device that detects the humidity in air. There  are three basic types of humidity sensors, those are capacitive, resistive and thermal. The capacitive sensor is used for measuring humidity in HVAC systems, fax machine, automobiles etc. The resistive sensor are used in residential, industrial and domestic application. Thermal conductive sensors are used in pharmaceutical plants, drying machines etc.
+ 
+TILT SENSOR: 
+A tilt sensor is device that helps in detection and measuring the tilt/inclination. These sensors are used to measure slope and tilt within a limited range of motion. Tilt sensors are used in cameras/video cameras, aircraft flight controls, automobile air bags, video game controllers etc. 
+
+
+
 
 NODEMCU PROGRAMMING: 
 General-purpose input/output (GPIO) is a pin on an Integrated Circuit which can be either input pin or output pin, whose behaviour can be controlled at the run time.
 
 
 CODE FOR BLINK LED:
-#define BUILTIN_LED 5
-void setup()
-{
-pinMode(BUILTIN_LED, OUTPUT); // Initialize the BUILTIN_LED pin as an output
+
+void setup{
+ pinMode(D6,OUTPUT);  //Initializes the LED pin as output 
 }
-void loop()
-{
-digitalWrite(BUILTIN_LED, LOW); // Turn the LED on (LOW is the voltage level)
-// but actually the LED is on because active low on ESP-01
-delay(1000);
-digitalWrite(BUILTIN_LED, HIGH); // Turn the LED off by making the voltage HIGH
-delay(1000);
+
+void loop{
+digitalWrite(D6,LOW); 		//Turns the LED on by making the voltage low
+delay(1200);			//Waits for 1.2 seconds
+digitalWrite(D6,HIGH);		//Turns off the LED by making the voltage high
+delay(1200);			//Waits for 1.2 second
 }
+
