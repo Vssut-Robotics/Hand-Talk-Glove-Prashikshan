@@ -11,8 +11,23 @@ ULTRASONIC SENSOR:
 An Ultrasonic Sensor is a non-contact type device that can be used to measure distance as well as velocity of an object. An Ultrasonic Sensor works based on the properties of the sound waves with frequency greater than that of the human audible range. The distance measurement at inaccessible areas is a typical application of ultrasonic sensors. PROXIMITY SENSOR: A Proximity Sensor is a non-contact type sensor that detects the presence of an object. Some of the applications of Proximity Sensors are Mobile Phones, Cars (Parking Sensors), industries (object alignment), Ground Proximity in Aircrafts, etc. INFRARED (IR) SENSOR: IR Sensors or Infrared Sensor are light based sensor that are used in various applications like Proximity and Object Detection. Different applications where IR Sensor is implemented are Mobile Phones, Robots, Industrial assembly, automobiles etc.
 TOUCH SENSOR: 
 Touch Sensors are the electronic sensors that can detect touch. They operate as a switch when touched. These sensors are used in lamps, touch screens of the mobile, etc. Touch sensors offer an intuitive user interface. HUMIDITY SENSOR: A humidity sensor measures and reports both moisture and air temperature. They are used for range far and wide. People with illnesses affected by humidity, monitoring and preventive measure in homes employ humidity sensors. A humidity sensor is also found as part of home heating, ventilating and air conditioning systems.
+
 PROXIMITY SENSOR:
 A Proximity Sensor is a device that detects the presence of nearby objects without any physical contact. An electromagnetic beam/field is emitted by the sensor and the sensor tries to find any changes in the field due to the proximity sensor’s target. There are different types of proximity sensors available like capacitive proximity sensor, photoelectric sensor, inductive proximity sensor etc. Some of the applications of these sensors are in mobile phones, parking sensor in cars, industries, ground proximity in aircrafts etc.
+
+SMOKE SENSOR: 
+A smoke sensor is a device that detects usually any kind of smoke, typically as an indicator of fire. The two most commonly recognized smoke detectors are ionization smoke alarm and photoelectric smoke alarm. Ionization smoke alarm helps in detecting fast, flaming fires with little smoke while photoelectric smoke alarm detects smouldering and smoky fires.
+
+ACCELEROMETER: 
+An accelerometer sensor is used to measure the proper acceleration that is exerted upon the sensor. There  are different types of accelerometer like compression mode, shear mode and capacitive. These can be used  to measure vibration on cars, machines, buildings etc.
+
+HUMDITY SENSOR: 
+A humidity sensor is a device that detects the humidity in air. There  are three basic types of humidity sensors, those are capacitive, resistive and thermal. The capacitive sensor is used for measuring humidity in HVAC systems, fax machine, automobiles etc. The resistive sensor are used in residential, industrial and domestic application. Thermal conductive sensors are used in pharmaceutical plants, drying machines etc.
+ 
+TILT SENSOR: 
+A tilt sensor is device that helps in detection and measuring the tilt/inclination. These sensors are used to measure slope and tilt within a limited range of motion. Tilt sensors are used in cameras/video cameras, aircraft flight controls, automobile air bags, video game controllers etc. 
+
+
 
 
 NODEMCU PROGRAMMING: 
