@@ -1,0 +1,275 @@
+TEXT TO SPEECH: 
+Text-to-speech is a type of assistive technology that can read aloud the digital texts. TTS can take words on a computer or other digital device and convert them into audio. The voice is computer generated and reading speed can usually be speed up or slowed down. Some TTS tools also have a technology called optical character recognition(OCR). It helps to read text aloud from images. In talking hand glove when a gesture is recognised ,it is converted to digital text which can be read aloud with the help of TTS. 
+TALKING HAND GLOVE: 
+A device that can convert the variation of the movement into beep/voice and in a text. The message will be out from the beeper and displayed on the LCD display. The glove senses the movements through the flex sensor and detects different patterns of motion. 
+
+Requirements: 
+Arduino Uno: It is a open source microcontroller board which is equipped with sets of digital and analog input/output pins that may be interface to various expansion boards and other circuits. 
+Nano Flex Sensors (2.2 inch) - 4/5 : A device that measure the amount of bend or angular deflection. It is made up of variable resistance and the amount of resistance is varied by bending the sensor. 
+GSM Module SIM 900A : It is complete dual band GSM/GPRS solution in a SMT module which can be embedded in the customer applications. 
+Beeper : A device that emits short, high pitched sounds as signal. 
+Resistors - 50 K Ohm,10 K Ohm 
+LCD Display Glove Capacitors 
+Connecting Wires 
+RF Module: A small electronic device used to transmit and/or receive radio signals between two devices. In an embedded system it is often desirable to communicate with another device wirelessly. 
+Hand Glove-1 
+Software Requirements : Arduino IDE
+
+Working: 
+Flex sensors that are fixed to the glove pick up the gesture made by the person and then with help of Arduino the analog input is converted to digital for the various gestures. There is a specific digital output for every particular gesture which is reserved for a specific message. So, when the individual does that particular gesture, the predefined message for that gesture is displayed on the LCD along with a beep (sound) and that specific message is also transmitted in the form of text or call with the help of GSM module to the various registered 
+numbers. If the patient perform a gesture of fist to express fear or situation of emergency, there would be a message displayed on the LCD: “emergency” along with a beep and that particular message would also be transmitted in the form of text or call to the Doctor’s phone or the Relative’s one. 
+Different gestures indicating different messages can be provided using the code so that communication will become more effective and with the help of glove message conveying would become easy. If a person does not know sign language then with the help of this glove the gesture can be converted into text or even in audio which will be very handy. 
+
+Construction: 
+Transmitter Section: It consists hand glove (fitted with Flex sensors) , GSM module, RF Transmitter and Arduino Uno as a Controller. All the gestures made by the hand glove (with Flex sensor ) is converted into different messages and commands for the operation of 
+different devices. Using the glove a corresponding gesture could be made and then accordingly that gesture would be converted into text message and with the help of GSM module it can be transmitted to the other person. 
+Receiver Section: It is used for the display the message or the operation of different devices through the gesture. RF Receiver receives the command and this command is catch by the Arduino and Arduino controls the actions of this sections. In this part, we are using fewer devices but you can also interface more devices. In this section LED bulb, motor and beeper are used for showing different action by the different gestures. 
+
+CODE: 
+#include<SoftwareSerial.h> 
+SoftwareSerial gsm(5,6); 
+int timesTosend=1; 
+int count=0; 
+int sense0 = A0; 
+int sense1 = A1; 
+int sense2 = A2; 
+int sense3 = A3; 
+// Pulse Monitor Test Script 
+int sensorPin = A4; 
+double alpha = 0.75; 
+int period = 100; 
+double change = 0.0; 
+double minval = 0.0; 
+int button; 
+int value; //temperature 
+char temp[5]; // temperature 
+char heart[5]; 
+void setup() 
+{ 
+analogReference(DEFAULT); 
+vw_setup(2000); // Bits per sec 
+Serial.begin(9600); 
+gsm.begin(9600); 
+gsm.println("AT+CMGF=1"); //set GSM to text mode 
+delay(1000); 
+} 
+void loop() 
+{ 
+static double oldValue = 0; 
+static double oldChange = 0; 
+int rawValue = analogRead (sensorPin); 
+int value1 = (alpha * oldValue + (1 - alpha) * rawValue)/3.75; 
+// Serial.println (value1); 
+oldValue = value1; 
+if(value1 > 90) 
+{ 
+while(count<timesTosend){ 
+delay(1500); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("8010xxxxx"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("Heart rate greater than 90"); //SMS body 
+delay(500); 
+gsm.write(0x1A); // sends ctrl+z end of message 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+itoa(value1, heart, 10); 
+vw_setup(2000); 
+delay(2000); 
+send("he"); 
+send(heart); 
+delay(500); 
+Serial.println(heart); 
+int flex0 = analogRead(sense0); 
+int flex1 = analogRead(sense1); 
+int flex2 = analogRead(sense2); 
+int flex3 = analogRead(sense3); 
+flex0 = map(flex0, 0, 1023, 0, 255); 
+flex1 = map(flex1, 0, 1023, 0, 255); 
+flex2 = map(flex2, 0, 1023, 0, 255); 
+flex3 = map(flex3, 0, 1023, 0, 255); 
+Serial.print(flex0); 
+Serial.print(" "); 
+Serial.print(flex1); 
+Serial.print(" "); 
+Serial.print(flex2); 
+Serial.print(" "); 
+Serial.print(flex3); 
+Serial.println(" "); 
+if(flex0 > 210 && flex1 > 62 && flex2 > 225 && flex3 < 200) 
+{ 
+Serial.println("water"); 
+send("waters"); 
+while(count<timesTosend){ 
+delay(1500); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("8010559599"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("water Requirement by patient"); 
+delay(500); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+if(flex0 >220 && flex1 >70 && flex2 <235 && flex3 > 240) 
+{ 
+Serial.println("food"); 
+send("foodie"); 
+while(count<timesTosend){ 
+Serial.print("Sending msg"); 
+delay(1500); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("8010xxxx"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("Food Requirement by patient"); 
+delay(500); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+if(flex0 > 230 && flex1 < 70 && flex2 >230 && flex3 > 240) 
+{ 
+Serial.println("medicine"); 
+send("medici"); 
+while(count<timesTosend){ 
+delay(1500); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("9069046104"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("Medicine Requirement by patient”); 
+delay(500); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+if(flex0 < 220 && flex1 >62 && flex2 > 230 && flex3 > 210) 
+{ 
+Serial.println("wheelchair"); 
+send("zchair"); 
+while(count<timesTosend){ 
+delay(1500); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("90690xxxxx"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("wheelchair Requirement by patient"); 
+delay(500); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+if(flex0 < 230 && flex1 < 65 && flex2 < 230 && flex3 >240) 
+{ 
+Serial.println("critical"); 
+send("critic"); 
+gsm.print("ATD + +918010559599;"); 
+delay(100); 
+gsm.println(); 
+delay(30000); // wait for 30 seconds... 
+gsm.println("ATH"); // hang up 
+gsm.begin(9600); 
+while(count<timesTosend){ 
+delay(1000); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("9069046104"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("Emergency Call"); 
+delay(1000); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+if(flex0 >222 && flex1 < 65 && flex2 <230 && flex3 >210 ) 
+{ 
+Serial.println("light on"); 
+send("lighto"); 
+} 
+/* if(flex0 <222 && flex1 < 62 && flex2 >230 && flex3 >195 )//fan 
+{ 
+Serial.println("zan on"); 
+send("fano"); 
+} */ 
+if(flex0 >218 && flex1 >62 && flex2 > 215 && flex3 < 210) 
+{ 
+Serial.println("headache"); 
+send("ache"); 
+while(count<timesTosend){ 
+delay(1000); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("9069046104"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("Headache"); 
+delay(1000); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+if(flex0 <220 && flex1 < 62 && flex2 <230 && flex3 < 220) 
+{ 
+Serial.println("chest pain"); 
+send("pain"); 
+while(count<timesTosend){ 
+delay(1000); 
+gsm.print("AT+CMGS=\""); 
+gsm.print("9069046104"); 
+gsm.println("\""); 
+while (gsm.read()!='>'); 
+{ 
+gsm.print("Chest pain"); 
+delay(1000); 
+gsm.write(0x1A); 
+gsm.write(0x0D); // Carriage Return in Hex 
+gsm.write(0x0A); // Line feed in Hex 
+delay(5000); 
+} 
+count++; 
+} 
+} 
+} 
+void send (char *message) 
+{ 
+vw_send((uint8_t *)message, strlen(message)); 
+vw_wait_tx(); // Wait until the whole message is gone
+}
