@@ -1,0 +1,89 @@
+                              TASK 3 
+# socket programming :
+What is sockets -
+Sockets are interior endpoint built for sending and receiving data.
+A single network will have two sockets.
+Sockets are a combination of an IP address and a Port
+Socket Programming in Python -
+Import the socket module.
+This module consists of built-in methods that are required for creating sockets and help them associate with each other.
+Important methods of the socket module :
+*socket.socket()  - Used to create sockets (required on both server as well as client ends to create sockets)
+*socket.accept()  - Used to accept a connection. It returns a pair of values (conn, address)
+*socket.bind() - Used to bind to the address that is specified as a parameter
+*socket.close() - Used to mark the socket as closed
+*socket.connect() - Used to connect to a remote address specified as the parameter
+*socket.listen() - enables the server to accept connections
+What is Servers and Clients -
+Server :
+ Either a program, a computer, or a device. Devoted to managing network resources. It can be on the same device or computer or local or even remote.
+Client :
+Computer or software that receives information or services.
+Clients requests for services from servers.
+The best example is a web browser
+
+
+TO EXCHANGE A HELLO MESSAGE BETWEEN SERVER AND A CLIENT USING PYTHON:
+For Server:
+import socket
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((socket.gethostname(),1234))          
+#port number can be anything between 0-65535(we usually specify non-privileged ports which are > 1023)
+s.listen()
+clt,adr=s.accept()
+print("Connection to",adr)  
+clt.send(bytes("Hello","utf-8 ")) #to send info to client socket
+ctl.close()
+For client:
+import socket
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+msg=s.recv(1024)
+print(msg.decode("utf-8"))
+
+# GSM/GPRS MODULE :
+GSM/GPRS Modules are one of the commonly used communication modules in embedded networks. A GSM GPRS Module is used to enable communication between a microcontroller (or a microprocessor) and the GSM / GPRS Network. Here, GSM stands for Global System for Mobile Communication and GPRS stands for General Packet Radio Service.  
+This Module is an IC that connects to the GSM Network using a SIM (Subscriber Identity Module) and Radio Waves. The common radio frequencies in which a typical GSM Module operates are 850MHz, 900MHz, 1800MHz and 1900MHz.
+it is not possible to interface a GSM/GPRS Module directly to an external device like a microcontroller.
+It consists of the GSM/GPRS Module, slot for inserting a SIM Card, RS-232 Interface for connecting with the computer or a microcontroller, signal status LED, power supply and a provision for connecting microphone and speaker.
+Each GSM/GPRS Module is unique and it can be differentiated by its IMEI Number. IMEI or International Mobile Equipment Identity Number is a 15 – digit unique number associated with a mobile phone, satellite phones and other GSM Network devices.
+we can do the following tasks with this module -
+-Make, receive or reject voice calls
+-Send, receive or delete SMS messages in the SIM Card
+-Add, read and search the contacts in the SIM Card
+-Send and receive data to/from the GSM/GPRS Network through GPRS
+All the above tasks can be implemented with the help of ATtention Commands or AT Commands.  GSM Network also implements a similar AT like commands for its GSM Modules.
+The processor or controller to which the GSM/GPRS Module is connected to, is responsible for sending the AT Commands to the module. In response, the GSM Module performs command-specific tasks like answering a phone call, send an SMS message, etc.
+# BRAIN WAVE SENSOR :
+The Brain wave sensor is which is mostly use is the EEG (electroencephalography) sensor.
+An EEG test evaluates the electrical activity of the brain. EEG scans are performed by placing EEG sensors / small metal discs also called EEG electrodes on our scalp. These electrodes pick up and record the electrical activity in our brain. The collected EEG signals are amplified, digitized, and then sent to a computer or mobile device for storage and data processing.
+The billions of cells in our brain produce very small electrical signals that form non-linear patterns called brainwaves. An EEG sensor measures the electrical activity in the cerebral cortex, the outer layer of the brain when EEG sensors are placed on our head, then the electrodes non-invasively detect brainwaves from the subject.
+Types of Brainwaves that EEG Measures :
+Beta Waves (frequency range from 14 Hz to about 30 Hz) - Beta waves are most closely associated with being conscious or in an awake, attentive and alert state. 
+Alpha Waves (frequency range from 7 Hz to 13 Hz) - Alpha waves are often associated with a relaxed, calm and lucid state of mind. Alpha waves can be found in the occipital and posterior regions of the brain.
+Theta waves (frequency range from 4 Hz to 7 Hz) 
+Delta Waves (frequency range up to 4 Hz) - Delta activity is predominantly found in infants. Delta waves are associated with deep stages of sleep in older subjects.
+# MUSCULAR SENSOR :
+The muscular sensor is which is mostly use is the EMG sensor.
+EMG Sensor (electromyography sensor) is one that measures small electrical signals generated by our muscles when we move them.
+
+This includes lifting our arm up, clenching our fist, or even the simplest of movements like moving a finger.
+The whole process starts off in our brain. Neural activity in the motor cortex (part of our brain) signals to the spinal cord. The signal is then conveyed to the muscle part via motor neurons. Motor neurons innervate the muscle directly, causing the release of Calcium ions within the muscle and ultimately creating a mechanical change. This mechanical change involves depolarization (change in electromechanical gradient), which is then detected by EMG for measurement.
+It is two type -
+1)sEMG sensors (surface electrodes): This type of EMG sensor takes measurements by placing surface EMG electrodes on our skin.
+2)Intramuscular EMG: This type of EMG sensor takes measurement through an inserting a monopolar needle electrode through our skin and into the muscle tissue.
+EMG sensors are mostly used for biomedical applications.
+BIBLIOGRAPHY:
+https://realpython.com/python-sockets/
+https://www.edureka.co/blog/socket-programming-python/
+https://youtu.be/Lbfe3-v7yE0
+
+https://youtu.be/oW8dRa0woPI
+https://www.electronicsforu.com/resources/gsm-module
+
+https://youtu.be/IEFv9Tjv2Zo
+https://imotions.com/blog/what-is-eeg/
+
+https://www.pantechsolutions.net/blog/muscle-sensors-harness-the-power-of-muscle-signals/amp/
+https://www.seeedstudio.com/blog/2019/12/27/what-is-emg-sensor-myoware-and-how-to-use-with-arduino/
+
