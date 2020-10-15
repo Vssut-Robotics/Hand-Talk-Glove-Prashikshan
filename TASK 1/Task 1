@@ -1,0 +1,54 @@
+Aim of this task is to understand what IoT means and it's importance in our everyday life.
+To do this we will learn about IoT and its application, NodeMcU, Arduino, Difference between Arduino and Node Mcu and WiFi Module (ESP8266) 
+
+1) IoT and its applications: The internet of things, or IoT, is a system of interrelated computing devices, mechanical and digital machines, objects, animals 
+   or people that are provided with unique identifiers (UIDs) and the ability to transfer data over a network without requiring human-to-human or human-to-computer 
+   interaction.
+   A thing in the internet of things can be a person with a heart monitor implant, a farm animal with a biochip transponder, an automobile that has built-in sensors 
+   to alert the driver when tire pressure is low or any other natural or man-made object that can be assigned an Internet Protocol (IP) address and is able to 
+   transfer data over a network.
+2) NodeMcu : NodeMCU is an open source Lua based firmware for the ESP8266 WiFi SOC from Espressif and uses an on-module flash-based SPIFFS file system. NodeMCU is 
+   implemented in C and is layered on the Espressif NON-OS SDK.
+   The firmware was initially developed as is a companion project to the popular ESP8266-based NodeMCU development modules, but the project is now 
+   community-supported, and the firmware can now be run on any ESP module.
+   For more one can visit : https://nodemcu.readthedocs.io/en/release/
+3) Arduino : Arduino is an open-source platform used for building electronics projects. Arduino consists of both a physical programmable circuit 
+   board (often referred to as a microcontroller) and a piece of software, or IDE (Integrated Development Environment) that runs on your computer, used to write 
+   and upload computer code to the physical board.
+   The Arduino platform has become quite popular with people just starting out with electronics, and for good reason. Unlike most previous programmable circuit 
+   boards, the Arduino does not need a separate piece of hardware (called a programmer) in order to load new code onto the board -- you can simply use a USB 
+   cable. Additionally, the Arduino IDE uses a simplified version of C++, making it easier to learn to program. Finally, Arduino provides a standard form factor 
+   that breaks out the functions of the micro-controller into a more accessible package.
+   For more one can visit : https://learn.sparkfun.com/tutorials/what-is-an-arduino/all
+4) Difference between Arduino and NodeMcu : https://iotdesignpro.com/articles/arduino-nano-vs-raspberry-pi-zero-w-vs-nodemcu-for-iot-projects
+5) Wifi Module( ESP8266 ) :  The ESP8266 WiFi Module is a self contained SOC with integrated TCP/IP protocol stack that can give any microcontroller access to 
+   your WiFi network. The ESP8266 is capable of either hosting an application or offloading all Wi-Fi networking functions from another application processor. 
+   Each ESP8266 module comes pre-programmed with an AT command set firmware, meaning, you can simply hook this up to your Arduino device and get about as much 
+   WiFi-ability as a WiFi Shield offers (and that's just out of the box)! The ESP8266 module is an extremely cost effective board with a huge, and ever growing, 
+   community.
+   This module has a powerful enough on-board processing and storage capability that allows it to be integrated with the sensors and other application specific 
+   devices through its GPIOs with minimal development up-front and minimal loading during runtime. Its high degree of on-chip integration allows for minimal 
+   external circuitry, including the front-end module, is designed to occupy minimal PCB area. The ESP8266 supports APSD for VoIP applications and Bluetooth 
+   co-existance interfaces, it contains a self-calibrated RF allowing it to work under all operating conditions, and requires no external RF parts.
+   There is an almost limitless fountain of information available for the ESP8266, all of which has been provided by amazing community support. In the Documents 
+   section below you will find many resources to aid you in using the ESP8266, even instructions on how to transforming this module into an 
+   IoT (Internet of Things) solution!
+   Note: The ESP8266 Module is not capable of 5-3V logic shifting and will require an external Logic Level Converter. Please do not power it directly from your 
+   5V dev board. This ESP8266 WiFi Module Adaptor comes with on-board logic level converter and 3.3V LDO regulator for easy interfacing to Arduino boards.
+   Features:
+
+      802.11 b/g/n
+      Wi-Fi Direct (P2P), soft-AP
+      Integrated TCP/IP protocol stack
+      Integrated TR switch, balun, LNA, power amplifier and matching network
+      Integrated PLLs, regulators, DCXO and power management units
+      +19.5dBm output power in 802.11b mode
+      Power down leakage current of <10uA
+      Integrated low power 32-bit CPU could be used as application processor
+      SDIO 1.1 / 2.0, SPI, UART
+      STBC, 1×1 MIMO, 2×1 MIMO
+      A-MPDU & A-MSDU aggregation & 0.4ms guard interval
+      Wake up and transmit packets in < 2ms
+      Standby power consumption of < 1.0mW (DTIM3)
+      Default baudrate: 115200
+
